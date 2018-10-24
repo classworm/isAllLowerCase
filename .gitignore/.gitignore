@@ -1,0 +1,54 @@
+using Xunit;
+
+namespace Chapter_C
+{
+    public class C02_IsAllLowerCase
+    {
+        /// <summary>
+        /// Return true if all characters in char array s are lower-case letters and false otherwise.
+        /// </summary>
+        public static bool IsAllLowerCase(char[] s)
+        {
+			int a = 0;
+			for (int i = 0; i < s.Length; i++)
+			{
+				if (IsLowerCase(s[i]) == true)
+				{
+					a++;
+				}
+			}
+			if (a == s.Length)
+			{
+				return true;
+			}
+
+            return false;
+        }
+
+        /// <summary>
+        /// Return true if character c is a lower case letter. You can use this in your solution instead of Char.IsLower
+        /// </summary>
+        public static bool IsLowerCase(char c)
+        {
+            return (c >= 'a' && c <= 'z');
+        }
+
+        [Fact()]
+        public void Test1()
+        {
+            Assert.True(IsAllLowerCase(new char[] { 'h', 'e', 'l', 'l', 'o' }));
+        }
+
+        [Fact()]
+        public void Test2()
+        {
+            Assert.False(IsAllLowerCase(new char[] { 'W', 'o', 'r', 'l', 'd'}));
+        }
+
+        [Fact()]
+        public void Test3()
+        {
+            Assert.False(IsAllLowerCase(new char[] { 'h', 'i', '!' }));
+        }
+    }
+}
